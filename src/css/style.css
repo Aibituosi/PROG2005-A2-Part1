@@ -1,0 +1,250 @@
+/* 全局样式重置：消除浏览器默认样式，适配移动设备 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  line-height: 1.6;
+}
+
+/* 容器：最大宽度限制，居中，适配不同屏幕 */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* 头部：包含反馈框，自适应 */
+.app-header {
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.app-header h1 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+/* 全局反馈框：无缝反馈核心，固定位置，淡入淡出 */
+.feedback {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 600;
+  z-index: 999;
+  display: none;
+  opacity: 0;
+  transition: all 0.3s ease;
+  min-width: 280px;
+  text-align: center;
+}
+
+/* 反馈类型：成功（绿）、错误（红）、警告（黄） */
+.feedback.success {
+  background-color: #2ecc71;
+}
+.feedback.error {
+  background-color: #e74c3c;
+}
+.feedback.warning {
+  background-color: #f39c12;
+}
+
+.feedback.show {
+  display: block;
+  opacity: 1;
+}
+
+/* 输入组：移动端垂直排列，宽屏水平排列，最小化表单样式 */
+.input-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  font-weight: 600;
+  color: #34495e;
+  font-size: 0.95rem;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  padding: 0.8rem;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  width: 100%;
+  /* 移动触控优化：取消默认高亮 */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.input-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* 按钮组：移动设备100%宽度，按钮均分，触控优化（48px高） */
+.btn-group, .search-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.btn {
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  /* 移动设计规范：最小点击区域48px*48px */
+  min-height: 48px;
+  flex: 1;
+  min-width: 120px;
+  transition: background-color 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 按钮样式区分，提升可识别性 */
+.btn.add {
+  background-color: #3498db;
+  color: #fff;
+}
+.btn.add:hover {
+  background-color: #2980b9;
+}
+.btn.edit {
+  background-color: #f1c40f;
+  color: #2c3e50;
+}
+.btn.edit:hover {
+  background-color: #f39c12;
+}
+.btn.delete {
+  background-color: #e74c3c;
+  color: #fff;
+}
+.btn.delete:hover {
+  background-color: #c0392b;
+}
+.btn.search {
+  background-color: #9b59b6;
+  color: #fff;
+}
+.btn.search:hover {
+  background-color: #8e44ad;
+}
+.btn.show-all {
+  background-color: #1abc9c;
+  color: #fff;
+}
+.btn.show-all:hover {
+  background-color: #16a085;
+}
+.btn.show-popular {
+  background-color: #e67e22;
+  color: #fff;
+}
+.btn.show-popular:hover {
+  background-color: #d35400;
+}
+
+/* 展示区域：响应式表格，移动设备横向滚动，避免挤压 */
+.display-section {
+  margin-top: 2rem;
+  overflow-x: auto;
+  /* 移动设备横向滚动优化 */
+  -webkit-overflow-scrolling: touch;
+}
+
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 768px;
+}
+
+.inventory-table th,
+.inventory-table td {
+  padding: 0.8rem;
+  text-align: left;
+  border: 1px solid #bdc3c7;
+  font-size: 0.9rem;
+}
+
+.inventory-table th {
+  background-color: #34495e;
+  color: #fff;
+}
+
+.inventory-table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* 空数据提示 */
+.empty-tip {
+  text-align: center;
+  padding: 2rem;
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  display: none;
+}
+
+.empty-tip.show {
+  display: block;
+}
+
+/* 媒体查询：断点768px（平板/小屏PC），优化布局 */
+@media (min-width: 768px) {
+  .input-group {
+    flex-direction: row;
+    align-items: center;
+  }
+  .input-group label {
+    width: 120px;
+    flex: 0 0 auto;
+  }
+  .comment-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .app-header h1 {
+    font-size: 2.2rem;
+  }
+  .btn {
+    flex: 0 0 auto;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* 媒体查询：断点320px（最小移动屏），适配极限宽度 */
+@media (max-width: 320px) {
+  .container {
+    padding: 1rem;
+  }
+  .btn {
+    min-width: 100%;
+  }
+  .feedback {
+    min-width: 240px;
+    padding: 0.6rem 1rem;
+  }
+}
