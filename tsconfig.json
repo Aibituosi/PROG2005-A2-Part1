@@ -1,44 +1,14 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
-    // "rootDir": "./src",
-    // "outDir": "./dist",
-
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "esnext",
-    "types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
-
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
-
-    // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true,
-  }
+    "target": "ES6",                          // 编译为ES6，适配移动浏览器
+    "module": "ES6",                          // 模块规范
+    "outDir": "./dist",                       // 编译后JS输出目录
+    "rootDir": "./src/ts",                    // TS源码根目录
+    "strict": true,                           // 开启严格模式，强类型校验
+    "esModuleInterop": true,                  // 模块互操作
+    "skipLibCheck": true,                     // 跳过库文件校验
+    "forceConsistentCasingInFileNames": true  // 强制文件名大小写一致
+  },
+  "include": ["./src/ts/**/*"],               // 包含的TS文件
+  "exclude": ["node_modules"]                 // 排除的目录
 }

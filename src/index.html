@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- 移动设备核心适配：视口设置，禁止缩放，适配所有移动设备 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>TS Inventory Management System</title>
+  <!-- 引入样式文件 -->
+  <link rel="stylesheet" href="./css/style.css">
+  <!-- 引入编译后的TS文件（ES6模块） -->
+  <script src="../dist/main.js" type="module" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header class="app-header">
+      <h1>库存管理系统</h1>
+      <!-- 全局反馈框：用于所有操作的即时反馈，替代alert -->
+      <div id="feedback" class="feedback"></div>
+    </header>
+
+    <!-- 操作区域：最小化表单，仅保留基础输入框 -->
+    <section class="operation-section">
+      <div class="input-group">
+        <label>商品ID（唯一）:</label>
+        <input type="text" id="itemId" placeholder="如E001" required>
+      </div>
+      <div class="input-group">
+        <label>商品名称:</label>
+        <input type="text" id="itemName" placeholder="如笔记本电脑" required>
+      </div>
+      <div class="input-group">
+        <label>分类:</label>
+        <select id="itemCategory" required>
+          <option value="">请选择</option>
+          <option value="Electronics">电子</option>
+          <option value="Furniture">家具</option>
+          <option value="Clothing">服装</option>
+          <option value="Tools">工具</option>
+          <option value="Miscellaneous">其他</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>数量:</label>
+        <input type="number" id="itemQuantity" min="0" placeholder="0" required>
+      </div>
+      <div class="input-group">
+        <label>价格($):</label>
+        <input type="number" id="itemPrice" min="0" step="0.01" placeholder="0.00" required>
+      </div>
+      <div class="input-group">
+        <label>供应商:</label>
+        <input type="text" id="itemSupplier" placeholder="如Harvey Norman" required>
+      </div>
+      <div class="input-group">
+        <label>库存状态:</label>
+        <select id="itemStockStatus" required>
+          <option value="">请选择</option>
+          <option value="In Stock">有货</option>
+          <option value="Low Stock">库存不足</option>
+          <option value="Out of Stock">缺货</option>
+        </select>
+      </div>
+      <div class="input-group">
+        <label>热门商品:</label>
+        <select id="itemPopular" required>
+          <option value="">请选择</option>
+          <option value="Yes">是</option>
+          <option value="No">否</option>
+        </select>
+      </div>
+      <div class="input-group comment-group">
+        <label>商品备注（可选）:</label>
+        <textarea id="itemComment" placeholder="请输入备注..."></textarea>
+      </div>
+      <!-- 操作按钮：做移动触控优化，增大点击区域 -->
+      <div class="btn-group">
+        <button id="addBtn" class="btn add">添加商品</button>
+        <button id="editBtn" class="btn edit">编辑商品（按名称）</button>
+        <button id="deleteBtn" class="btn delete">删除商品（按名称）</button>
+      </div>
+    </section>
+
+    <!-- 搜索与筛选区域 -->
+    <section class="search-section">
+      <div class="input-group search-group">
+        <input type="text" id="searchInput" placeholder="按商品名称搜索">
+        <button id="searchBtn" class="btn search">搜索</button>
+        <button id="showAllBtn" class="btn show-all">显示全部</button>
+        <button id="showPopularBtn" class="btn show-popular">显示热门商品</button>
+      </div>
+    </section>
+
+    <!-- 商品展示区域：响应式表格，适配移动窄屏 -->
+    <section class="display-section">
+      <table id="inventoryTable" class="inventory-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名称</th>
+            <th>分类</th>
+            <th>数量</th>
+            <th>价格</th>
+            <th>供应商</th>
+            <th>库存状态</th>
+            <th>热门</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody id="inventoryTableBody"></tbody>
+      </table>
+      <!-- 空数据提示 -->
+      <div id="emptyTip" class="empty-tip">暂无商品数据</div>
+    </section>
+  </div>
+</body>
+</html>
