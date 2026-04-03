@@ -9,5 +9,15 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "@angular/cdk": "^17.3.10",
+    "crypto-js": "^4.2.0",
+    "localforage": "^1.10.0",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
+    "@types/uuid": "^10.0.0"
+  }
 }
